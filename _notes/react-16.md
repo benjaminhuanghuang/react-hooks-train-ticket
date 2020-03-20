@@ -11,8 +11,39 @@ ContextType 是Context Consumer的语法糖
 
 ## Lazy + Suspend
 - webpack Code splitting
-- 异步import 
+```
+  const About = lazy(()=>import(/* webpackChunkName: "about"*/'./About'))
+```
+
+- 利用异步import功能
 ```
   import('./about').then()
 ```
+
+- Error handling
+```
+  // Error handling method 1
+  componentDidCatch(){
+    this.setState({
+      hasError: true
+    })
+  }
+
+  // Error handling method 2
+  static getDerivedStateFromError(){
+    return {
+      hasError: true
+    }
+  }
+```
+
 ## memo
+PureComponent compares the props, it  can not handle object updating in this.props
+function compoent 没有this.props可供比较，因此要使用memo
+
+
+## Hooks (2018 React v16.8)
+
+
+
+
