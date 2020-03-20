@@ -6,9 +6,10 @@ import * as serviceWorker from './serviceWorker';
 //
 import ContextDemoApp from "./ContextDemoApp"
 import ContextTypeDemoApp from "./ContextTypeDemoApp"
+import LazyDemoApp from "./LazyDemoApp"
 
 
-ReactDOM.render(<ContextTypeDemoApp />, document.getElementById('root'));
+ReactDOM.render(<LazyDemoApp />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
