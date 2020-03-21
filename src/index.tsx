@@ -8,9 +8,10 @@ import ContextDemoApp from "./ContextDemoApp"
 import ContextTypeDemoApp from "./ContextTypeDemoApp"
 import LazyDemoApp from "./LazyDemoApp"
 import MemoDemoApp from "./MemoDemoApp"
+import HookDemoApp from "./StateHookDemoApp"
 
 
-ReactDOM.render(<MemoDemoApp />, document.getElementById('root'));
+ReactDOM.render(<HookDemoApp />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
