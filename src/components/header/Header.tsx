@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Header.css';
 
-export function Header(props) {
+
+interface HeaderProps{
+    onBack: ()=>void;
+    title: string;
+}
+export function Header(props: HeaderProps) {
     const { onBack, title } = props;
 
     return (
@@ -21,8 +26,3 @@ export function Header(props) {
         </div>
     );
 }
-
-Header.propTypes = {
-    onBack: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired,
-};

@@ -5,7 +5,15 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import './Nav.css';
 
-export const Nav = memo(function Nav(props) {
+
+interface NavProps{
+    date: number
+    prev: ()=>void
+    next: ()=>void
+    isPrevDisabled: boolean
+    isNextDisabled: boolean
+}
+export const Nav = memo(function Nav(props:NavProps) {
     const { date, prev, next, isPrevDisabled, isNextDisabled } = props;
 
     const currentString = useMemo(() => {
@@ -35,13 +43,3 @@ export const Nav = memo(function Nav(props) {
         </div>
     );
 });
-
-export default Nav;
-
-Nav.propTypes = {
-    date: PropTypes.number.isRequired,
-    prev: PropTypes.func.isRequired,
-    next: PropTypes.func.isRequired,
-    isPrevDisabled: PropTypes.bool.isRequired,
-    isNextDisabled: PropTypes.bool.isRequired,
-};

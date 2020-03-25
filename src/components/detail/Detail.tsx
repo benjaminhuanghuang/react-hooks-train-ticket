@@ -4,13 +4,25 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import './Detail.css';
 
-function format(d) {
+function format(d: number) {
     const date = dayjs(d);
 
     return date.format('MM-DD') + ' ' + date.locale('zh-cn').format('ddd');
 }
 
-export const Detail = memo(function Detail(props) {
+interface DetailProps{
+    departDate: number;
+    arriveDate: number;
+    departTimeStr?: string;
+    arriveTimeStr: string;
+    trainNumber: string;
+    departStation: string;
+    arriveStation: string;
+    durationStr?: string;
+    children:any
+}
+
+export const Detail = memo(function Detail(props:DetailProps) {
     const {
         departDate,
         arriveDate,
@@ -48,13 +60,3 @@ export const Detail = memo(function Detail(props) {
     );
 });
 
-Detail.propTypes = {
-    departDate: PropTypes.number.isRequired,
-    arriveDate: PropTypes.number.isRequired,
-    departTimeStr: PropTypes.string,
-    arriveTimeStr: PropTypes.string,
-    trainNumber: PropTypes.string.isRequired,
-    departStation: PropTypes.string.isRequired,
-    arriveStation: PropTypes.string.isRequired,
-    durationStr: PropTypes.string,
-};
