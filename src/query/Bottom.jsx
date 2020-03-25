@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Slider from './Slider.jsx';
-import { ORDER_DEPART } from './constant';
+import { ORDER_DEPART } from './redux/constant';
 import './Bottom.css';
 
 function checkedReducer(state, action) {

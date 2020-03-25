@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { h0 } from '../common/fp';
+import { h0 } from '../utilities';
 import dayjs from 'dayjs';
 import './DepartDate.css';
 

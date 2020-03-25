@@ -4,8 +4,8 @@ import URI from 'urijs';
 import dayjs from 'dayjs';
 import { bindActionCreators } from 'redux';
 
-import { h0 } from '../utilities/fp';
-import {Header, Nav, useNav} from '../components';
+import { h0, useNav } from '../utilities';
+import {Header, Nav} from '../components';
 import List from './List.jsx';
 import Bottom from './Bottom.jsx';
 

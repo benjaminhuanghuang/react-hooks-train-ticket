@@ -18,7 +18,7 @@ CityItem.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
-const CitySection = memo(function CitySection(props) {
+export const CitySection = memo(function CitySection(props) {
     const { title, cities = [], onSelect } = props;
 
     return (

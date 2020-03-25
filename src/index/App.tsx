@@ -10,7 +10,7 @@ import HighSpeed from "./HighSpeed.jsx";
 import Journey from "./Journey.jsx";
 import Submit from "./Submit.jsx";
 
-import { h0 } from "../utilities/fp";
+import { h0 } from "../utilities";
 
 import {
   exchangeFromTo,

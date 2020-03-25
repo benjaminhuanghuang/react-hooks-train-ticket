@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { h0 } from '../../utilities/fp';
-import Header from './Header.jsx';
+import {Header} from '../header/Header.jsx';
 
-import './DateSelector.css';
+import '../date-selector/DateSelector.css';
 
 function Day(props) {
     const { day, onSelect } = props;

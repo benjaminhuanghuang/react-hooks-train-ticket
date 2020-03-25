@@ -1,6 +1,6 @@
 import { ORDER_DURATION, ORDER_DEPART } from './constant';
 
-import { h0 } from '../common/fp';
+import { h0 } from '../../utilities/fp';
 
 export const ACTION_SET_FROM = 'SET_FROM';
 export const ACTION_SET_TO = 'SET_TO';

@@ -1,4 +1,4 @@
-import { h0 } from '../common/fp';
+import { h0 } from '../../utilities/fp';
 export const ACTION_SET_DEPART_DATE = 'SET_DEPART_DATE';
 export const ACTION_SET_ARRIVE_DATE = 'SET_ARRIVE_DATE';
 export const ACTION_SET_DEPART_TIME_STR = 'SET_DEPART_TIME_STR';
