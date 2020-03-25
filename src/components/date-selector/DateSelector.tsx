@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { h0 } from '../../utilities/fp';
-import {Header} from '../header/Header.jsx';
+import { h0 } from '../../utilities';
+import {Header} from '../header/Header';
 
 import '../date-selector/DateSelector.css';
 
