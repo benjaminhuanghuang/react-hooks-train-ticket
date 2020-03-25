@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 
-import { h0 } from '../common/fp';
+import { h0 } from '../../utilities/fp';
 import { ORDER_DEPART } from './constant';
 
 export default createStore(

@@ -4,12 +4,10 @@ import URI from 'urijs';
 import dayjs from 'dayjs';
 import { bindActionCreators } from 'redux';
 
-import { h0 } from '../common/fp';
-import Header from '../common/Header.jsx';
-import Nav from '../common/Nav.jsx';
+import { h0 } from '../utilities/fp';
+import {Header, Nav, useNav} from '../components';
 import List from './List.jsx';
 import Bottom from './Bottom.jsx';
-import useNav from '../common/useNav';
 
 import {
     setFrom,
@@ -36,7 +34,7 @@ import {
     setDepartTimeEnd,
     setArriveTimeStart,
     setArriveTimeEnd,
-} from './actions';
+} from './redux/actions';
 
 import './App.css';
 

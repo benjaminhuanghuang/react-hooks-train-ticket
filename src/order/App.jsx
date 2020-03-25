@@ -29,7 +29,7 @@ import {
     showGenderMenu,
     showFollowAdultMenu,
     showTicketTypeMenu,
-} from './actions';
+} from './redux/actions';
 
 function App(props) {
     const {

@@ -138,10 +138,10 @@ module.exports = function(webpackEnv) {
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry:{
-      index: [paths.appIndexJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient').filter(Boolean)],
-      query: [paths.queryJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient').filter(Boolean)],
-      ticket: [paths.apptickeJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient').filter(Boolean)],
-      order: [paths.appOrderJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient').filter(Boolean)]
+      index: [paths.appIndexJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean),
+      query: [paths.appQueryJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean),
+      ticket: [paths.appTicketJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean),
+      order: [paths.appOrderJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean)
     }, 
     output: {
       // The build folder.
@@ -526,34 +526,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
-            filename:'index.html',
-            chunks: ['index']
-          },
-          isEnvProduction
-            ? {
-                minify: {
-                  removeComments: true,
-                  collapseWhitespace: true,
-                  removeRedundantAttributes: true,
-                  useShortDoctype: true,
-                  removeEmptyAttributes: true,
-                  removeStyleLinkTypeAttributes: true,
-                  keepClosingSlash: true,
-                  minifyJS: true,
-                  minifyCSS: true,
-                  minifyURLs: true,
-                },
-              }
-            : undefined
-        )
-      ),
-      new HtmlWebpackPlugin(
-        Object.assign(
-          {},
-          {
-            inject: true,
-            template: paths.appHtml,
+            template: paths.appQueryHtml,
             filename:'query.html',
             chunks: ['query']
           },
@@ -580,7 +553,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: paths.appTicketHtml,
             filename:'ticket.html',
             chunks: ['ticket']
           },
@@ -607,7 +580,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: paths.appOrderHtml,
             filename:'order.html',
             chunks: ['order']
           },

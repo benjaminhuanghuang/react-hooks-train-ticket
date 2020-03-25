@@ -24,7 +24,7 @@ import {
   toggleHighSpeed
 } from "./redux/actions";
 
-function AppInternal(props) {
+function App(props) {
   const {
     from,
     to,
@@ -128,11 +128,11 @@ function AppInternal(props) {
   );
 }
 
-export const App = connect(
+ export default connect(
   function mapStateToProps(state) {
     return state;
   },
   function mapDispatchToProps(dispatch) {
     return { dispatch };
   }
-)(AppInternal);
+)(App);

@@ -27,7 +27,7 @@ import {
     setDurationStr,
     setTickets,
     toggleIsScheduleVisible,
-} from './actions';
+} from './redux/actions';
 
 const Schedule = lazy(() => import('./Schedule.jsx'));
 

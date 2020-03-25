@@ -66,3 +66,8 @@ manifest.json: define the icon, name of the web application
   appOrderHtml: resolveApp('public/order.html'),
   appOrderJs: resolveModule(resolveApp, 'src/order/index'),
 ```
+
+## Create HtmlWebpackPlugin  for each page in webpack.config.js
+```
+  new HtmlWebpackPlugin(
+```
