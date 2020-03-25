@@ -54,8 +54,19 @@ module.exports = {
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
+
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
+
+  appQueryHtml: resolveApp('public/query.html'),
+  appQueryJs: resolveModule(resolveApp, 'src/query/index'),
+
+  appTicketHtml: resolveApp('public/ticket.html'),
+  appTicketJs: resolveModule(resolveApp, 'src/ticket/index'),
+
+  appOrderHtml: resolveApp('public/order.html'),
+  appOrderJs: resolveModule(resolveApp, 'src/order/index'),
+
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),

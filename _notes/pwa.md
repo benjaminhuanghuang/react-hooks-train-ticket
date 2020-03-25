@@ -35,3 +35,34 @@ Activete it in index.js
 
 manifest.json: define the icon, name of the web application
 
+## Create html file for each react app/page
+
+
+## Modify webpack config in paths.js
+```
+  appHtml: resolveApp('public/index.html'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
+
+  appQueryHtml: resolveApp('public/query.html'),
+  appQueryJs: resolveModule(resolveApp, 'src/query/index'),
+
+  appTicketHtml: resolveApp('public/ticket.html'),
+  appTicketJs: resolveModule(resolveApp, 'src/ticket/index'),
+
+  appOrderHtml: resolveApp('public/order.html'),
+  appOrderJs: resolveModule(resolveApp, 'src/order/index'),
+```
+## Modify entry in webpack.config.js
+```
+  appHtml: resolveApp('public/index.html'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
+
+  appQueryHtml: resolveApp('public/query.html'),
+  appQueryJs: resolveModule(resolveApp, 'src/query/index'),
+
+  appTicketHtml: resolveApp('public/ticket.html'),
+  appTicketJs: resolveModule(resolveApp, 'src/ticket/index'),
+
+  appOrderHtml: resolveApp('public/order.html'),
+  appOrderJs: resolveModule(resolveApp, 'src/order/index'),
+```
