@@ -10,7 +10,7 @@ function format(d) {
     return date.format('MM-DD') + ' ' + date.locale('zh-cn').format('ddd');
 }
 
-const Detail = memo(function Detail(props) {
+export const Detail = memo(function Detail(props) {
     const {
         departDate,
         arriveDate,
@@ -58,5 +58,3 @@ Detail.propTypes = {
     arriveStation: PropTypes.string.isRequired,
     durationStr: PropTypes.string,
 };
-
-export default Detail;

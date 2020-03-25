@@ -168,7 +168,7 @@ Suggest.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
-const CitySelector = memo(function CitySelector(props) {
+export const CitySelector = memo(function CitySelector(props) {
     const {
         show,
         cityData,
@@ -260,4 +260,4 @@ CitySelector.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
-export default CitySelector;
+

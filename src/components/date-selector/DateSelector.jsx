@@ -122,7 +122,7 @@ Month.propTypes = {
     onSelect: PropTypes.func.isRequired,
 };
 
-export default function DateSelector(props) {
+export function DateSelector(props) {
     const { show, onSelect, onBack } = props;
 
     const now = new Date();

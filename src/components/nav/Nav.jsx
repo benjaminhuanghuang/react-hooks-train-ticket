@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import './Nav.css';
 
-const Nav = memo(function Nav(props) {
+export const Nav = memo(function Nav(props) {
     const { date, prev, next, isPrevDisabled, isNextDisabled } = props;
 
     const currentString = useMemo(() => {
