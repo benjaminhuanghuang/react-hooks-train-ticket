@@ -120,7 +120,7 @@ function Month(props: MonthProps) {
 }
 
 interface DateSelector {
-  show: boolean;
+  show?: boolean;
   onSelect: (key: ReactText) => void;
   onBack: () => void;
 }

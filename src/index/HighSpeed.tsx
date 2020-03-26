@@ -1,16 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './HighSpeed.css';
 
-export default function HighSpeed(props) {
+
+interface HighSpeedProps{
+    highSpeed:boolean;
+    toggle:()=>void;
+}
+export const HighSpeed = (props:HighSpeedProps)=> {
     const { highSpeed, toggle } = props;
 
     return (
         <div className="high-speed">
             <div className="high-speed-label">只看高铁/动车</div>
             <div className="high-speed-switch" onClick={() => toggle()}>
-                <input type="hidden" name="highSpeed" value={highSpeed} />
+                <input type="hidden" name="highSpeed" value= {String(highSpeed)} />
                 <div
                     className={classnames('high-speed-track', {
                         checked: highSpeed,
@@ -26,8 +30,3 @@ export default function HighSpeed(props) {
         </div>
     );
 }
-
-HighSpeed.propTypes = {
-    highSpeed: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired,
-};

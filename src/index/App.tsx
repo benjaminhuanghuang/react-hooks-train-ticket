@@ -1,14 +1,15 @@
 import React, { useCallback, useMemo } from "react";
-import { bindActionCreators } from "redux";
+import { bindActionCreators , Dispatch, AnyAction} from "redux";
 import { connect } from "react-redux";
+
 import "./App.css";
 
 import { Header, CitySelector, DateSelector } from "../components/";
 
-import DepartDate from "./DepartDate.jsx";
-import HighSpeed from "./HighSpeed.jsx";
-import Journey from "./Journey.jsx";
-import Submit from "./Submit.jsx";
+import {DepartDate} from "./DepartDate";
+import {HighSpeed} from "./HighSpeed";
+import {Journey} from "./Journey";
+import {Submit} from "./Submit";
 
 import { h0 } from "../utilities";
 
@@ -24,7 +25,19 @@ import {
   toggleHighSpeed
 } from "./redux/actions";
 
-function App(props) {
+interface AppProps {
+  from?: any;
+  to?: any;
+  isCitySelectorVisible?: boolean;
+  isDateSelectorVisible?: boolean;
+  cityData?: any;
+  isLoadingCityData?: any;
+  highSpeed: boolean;
+  dispatch: Dispatch<AnyAction>;
+  departDate?: any;
+}
+
+function App(props: AppProps) {
   const {
     from,
     to,
@@ -128,7 +141,7 @@ function App(props) {
   );
 }
 
- export default connect(
+export default connect(
   function mapStateToProps(state) {
     return state;
   },

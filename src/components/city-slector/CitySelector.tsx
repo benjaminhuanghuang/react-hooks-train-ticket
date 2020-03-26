@@ -164,7 +164,7 @@ const Suggest = memo(function Suggest(props: SuggestProps) {
   );
 });
 interface CitySelectorProps {
-  show: boolean;
+  show?: boolean;
   cityData: any;
   isLoading: boolean;
   onBack: () => void;
