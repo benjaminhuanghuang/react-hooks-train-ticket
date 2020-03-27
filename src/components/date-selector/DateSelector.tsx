@@ -119,13 +119,13 @@ function Month(props: MonthProps) {
   );
 }
 
-interface DateSelector {
+interface DateSelectorProps {
   show?: boolean;
   onSelect: (key: ReactText) => void;
   onBack: () => void;
 }
 
-export function DateSelector(props: DateSelector) {
+export function DateSelector(props: DateSelectorProps) {
   const { show, onSelect, onBack } = props;
 
   const now = new Date();
