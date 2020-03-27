@@ -9,8 +9,11 @@ export default createStore(
     from: "北京",
     to: "上海",
     isCitySelectorVisible: false,
+    //bool indicate the selected value will be set to "from" or "to"
     currentSelectingLeftCity: false,
+    // all city will be renderd on city selector
     cityData: null,
+    // city data cames from api call
     isLoadingCityData: false,
     isDateSelectorVisible: false,
     departDate: Date.now(),

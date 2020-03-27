@@ -6,10 +6,10 @@ import "./App.css";
 
 import { Header, CitySelector, DateSelector } from "../components/";
 
-import {DepartDate} from "./DepartDate";
-import {HighSpeed} from "./HighSpeed";
-import {Journey} from "./Journey";
-import {Submit} from "./Submit";
+import {DepartDate} from "./depart-date/DepartDate";
+import {HighSpeed} from "./high-speed/HighSpeed";
+import {Journey} from "./journey/Journey";
+import {Submit} from "./submit/Submit";
 
 import { h0 } from "../utilities";
 
