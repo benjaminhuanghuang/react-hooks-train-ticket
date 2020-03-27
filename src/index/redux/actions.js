@@ -41,6 +41,7 @@ export function setCityData(cityDate) {
 }
 
 export function toggleHighSpeed() {
+  //this is an asycn action
   return (dispatch, getState) => {
     const { highSpeed } = getState();
     dispatch({
@@ -51,6 +52,7 @@ export function toggleHighSpeed() {
 }
 
 export function showCitySelector(currentSelectingLeftCity) {
+  //this is an asycn action
   return dispatch => {
     dispatch({
       type: ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
