@@ -5,9 +5,18 @@ https://www.bilibili.com/video/av95436901
 链接:https://pan.baidu.com/s/1LI0H338PpLmwBN9aTpfVdQ 密码:so8d
 
 
+## Server side:
+Node.js + Exprss + mocker-api
 
-## Setup
 
+## Config proxy in client side code
+```
+"proxy":"http://localhost:8888"
+``` 
+The front-end webpack server will transfer request to back-end node server
+
+
+## Client Setup
 ```
 npm run eject
 
