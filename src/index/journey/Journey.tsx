@@ -1,3 +1,6 @@
+/*
+  Start station <=> end station
+*/
 import React from "react";
 import switchImg from "./imgs/switch.svg";
 import "./Journey.css";
