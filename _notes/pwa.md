@@ -20,11 +20,13 @@
 
 
 ## workbox 
-Using libaray workbox 
+Using libaray workbox with webpack
 ```
 workbox-webpack-plugin
 ```
-Activete it in index.js
+
+## Using pwa in project
+0. Active pwa in index.js
 ```
   if ("production" === process.env.NODE_ENV) {
     serviceWorker.register();
@@ -33,12 +35,11 @@ Activete it in index.js
   }
 ```
 
-manifest.json: define the icon, name of the web application
-
-## Create html file for each react app/page
+1. Create html file for each react app/page
 
 
-## Modify webpack config in paths.js
+2. Setup path for each of module
+Modify webpack config in paths.js
 ```
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
@@ -52,7 +53,7 @@ manifest.json: define the icon, name of the web application
   appOrderHtml: resolveApp('public/order.html'),
   appOrderJs: resolveModule(resolveApp, 'src/order/index'),
 ```
-## Modify entry in webpack.config.js
+3. Add entry for each of module in webpack.config.js
 ```
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
@@ -66,8 +67,7 @@ manifest.json: define the icon, name of the web application
   appOrderHtml: resolveApp('public/order.html'),
   appOrderJs: resolveModule(resolveApp, 'src/order/index'),
 ```
-
-## Create HtmlWebpackPlugin  for each page in webpack.config.js
+4. Create HtmlWebpackPlugin  for each page in webpack.config.js
 ```
-  new HtmlWebpackPlugin(
+  new HtmlWebpackPlugin()
 ```

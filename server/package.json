@@ -8,10 +8,11 @@
     "express": "^4.16.4",
     "mocker-api": "^1.7.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "~2.0.2"
+  },
   "scripts": {
-    "start": "pm2 start index.js -n mocker",
-    "stop": "pm2 delete mocker"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

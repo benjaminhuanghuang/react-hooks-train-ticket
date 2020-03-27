@@ -40,7 +40,8 @@ ContextType 是Context Consumer的语法糖
 ## memo
 PureComponent compares the props, it  can not handle object updating in this.props
 function compoent 没有this.props可供比较，因此要使用memo
-
+```
+```
 
 ## Hooks (2018 React v16.8)
 - No this problem
