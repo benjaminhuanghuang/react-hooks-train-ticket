@@ -139,13 +139,12 @@ module.exports = function(webpackEnv) {
       : isEnvDevelopment && 'cheap-module-source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
-    // entry: [isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'), paths.appIndexJs].filter(Boolean),
     entry: {
-      index: paths.appIndexJs,
-      // query: [paths.appQueryJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean),
-      // ticket: [paths.appTicketJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean),
-      // order: [paths.appOrderJs, isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient')].filter(Boolean)
-    }, 
+      index: [isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
+      order: [isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appOrderJs].filter(Boolean),
+      ticket: [isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appTicketJs].filter(Boolean),
+      query: [isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appQueryJs].filter(Boolean)
+    },
     output: {
       // The build folder.
       path: isEnvProduction ? paths.appBuild : undefined,
@@ -156,8 +155,6 @@ module.exports = function(webpackEnv) {
       filename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'
         : isEnvDevelopment && 'static/js/bundle.js',
-      // TODO: remove this when upgrading to webpack 5
-      futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].chunk.js'
@@ -529,9 +526,9 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appTicketHtml,
-            filename: "ticket.html",
-            chunks:["ticket"]
+            template: paths.appOrderHtml,
+            filename: "order.html",
+            chunks:["order"]
           },
           isEnvProduction
             ? {
@@ -583,9 +580,9 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appOrderHtml,
-            filename: "order.html",
-            chunks:["order"]
+            template: paths.appTicketHtml,
+            filename: "ticket.html",
+            chunks:["ticket"]
           },
           isEnvProduction
             ? {
@@ -659,9 +656,10 @@ module.exports = function(webpackEnv) {
             manifest[file.name] = file.path;
             return manifest;
           }, seed);
-          const entrypointFiles = entrypoints.main.filter(
-            fileName => !fileName.endsWith('.map')
-          );
+          const entrypointFiles = {};
+          Object.keys(entrypoints).forEach(entrypoint => {
+            entrypointFiles[entrypoint] = entrypoints[entrypoint].filter(fileName => !fileName.endsWith('.map'));
+          });
 
           return {
             files: manifestFiles,
