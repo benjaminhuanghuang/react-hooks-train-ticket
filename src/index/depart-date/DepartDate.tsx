@@ -1,23 +1,25 @@
+/*
+  Show depart date of the train ticket
+*/
 import React, { useMemo } from "react";
-import PropTypes from "prop-types";
-import { h0 } from "../../utilities";
+import { h0 } from "../../utilities";  
 import dayjs from "dayjs";
 import "./DepartDate.css";
 
 interface DepartDateProps {
-  time: number;
-  onClick: () => void;
+  time: number;  // Unix timestamp
+  onClick: () => void;  // Pop the date select
 }
 
 export const DepartDate = (props: DepartDateProps) => {
   const { time, onClick } = props;
-
+  // Cut the hour, minute, second, millisecond from timestamp
   const h0OfDepart = h0(time);
   const departDate = new Date(h0OfDepart);
 
   const departDateString = useMemo(() => {
     return dayjs(h0OfDepart).format("YYYY-MM-DD");
-  }, [h0OfDepart]);
+  }, [h0OfDepart]);   // avoid refresh in one day
 
   const isToday = h0OfDepart === h0();
 

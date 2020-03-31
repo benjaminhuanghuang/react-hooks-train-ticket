@@ -2,6 +2,13 @@ import React, { useState, useCallback, useEffect, useMemo, memo, ReactText } fro
 import classnames from "classnames";
 import "./CitySelector.css";
 
+import {AlphaIndex} from "./AlphaIndex"
+
+import {Suggest} from "./Suggest"
+
+/*
+   Render one city in the city list for selection
+*/
 interface CityItemProps {
   name: string;
   onSelect: (key: ReactText) => void;
@@ -15,9 +22,14 @@ const CityItem = memo(function CityItem(props: CityItemProps) {
     </li>
   );
 });
+
+/*
+  Render cities grouped by first character for selection
+*/
 interface City {
   name: string;
 }
+
 interface CitySelectionProps {
   title: string;
   cities: City[];
@@ -43,30 +55,16 @@ export const CitySection = memo(function CitySection(
   );
 });
 
-interface AlphaIndexProps {
-  alpha: string;
-  onClick: (name: string) => void;
-}
-
-const AlphaIndex = memo(function AlphaIndex(props: AlphaIndexProps) {
-  const { alpha, onClick } = props;
-
-  return (
-    <i className="city-index-item" onClick={() => onClick(alpha)}>
-      {alpha}
-    </i>
-  );
-});
-
-const alphabet = Array.from(new Array(26), (ele, index) => {
-  return String.fromCharCode(65 + index);
-});
 
 interface Selection {
   title: string;
   citys: City[];
 }
 
+
+/*
+  Whole city list
+*/
 interface CityListProp {
   sections: Selection[];
   onSelect: (key: ReactText) => void;
@@ -76,6 +74,10 @@ interface CityListProp {
 const CityList = memo(function CityList(props: CityListProp) {
   const { sections, toAlpha, onSelect } = props;
 
+  const alphabet = Array.from(new Array(26), (ele, index) => {
+    return String.fromCharCode(65 + index);
+  });
+  
   return (
     <div className="city-list">
       <div className="city-cate">
@@ -99,70 +101,7 @@ const CityList = memo(function CityList(props: CityListProp) {
   );
 });
 
-interface SuggestItemProps {
-  name: string;
-  onClick: (name: string) => void;
-}
-const SuggestItem = memo(function SuggestItem(props: SuggestItemProps) {
-  const { name, onClick } = props;
 
-  return (
-    <li className="city-suggest-li" onClick={() => onClick(name)}>
-      {name}
-    </li>
-  );
-});
-
-interface SuggestProps {
-  searchKey: string;
-  onSelect: (name: string) => void;
-}
-
-const Suggest = memo(function Suggest(props: SuggestProps) {
-  const { searchKey, onSelect } = props;
-
-  const [result, setResult] = useState([]);
-
-  useEffect(() => {
-    fetch("/rest/search?key=" + encodeURIComponent(searchKey))
-      .then(res => res.json())
-      .then(data => {
-        const { result, searchKey: sKey } = data;
-
-        if (sKey === searchKey) {
-          setResult(result);
-        }
-      });
-  }, [searchKey]);
-
-  const fallBackResult = useMemo(() => {
-    if (!result.length) {
-      return [
-        {
-          display: searchKey
-        }
-      ];
-    }
-
-    return result;
-  }, [result, searchKey]);
-
-  return (
-    <div className="city-suggest">
-      <ul className="city-suggest-ul">
-        {fallBackResult.map(item => {
-          return (
-            <SuggestItem
-              key={item.display}
-              name={item.display}
-              onClick={onSelect}
-            />
-          );
-        })}
-      </ul>
-    </div>
-  );
-});
 
 /*
   City Selector
@@ -191,6 +130,8 @@ export const CitySelector = memo(function CitySelector(props:CitySelectorProps) 
     fetchCityData();
   }, [show, cityData, isLoading]);
 
+  // response user click on character, scholl city group into view
+  // Pass this function to AlphaIndex component
   const toAlpha = useCallback(alpha => {
     document.querySelector(`[data-cate='${alpha}']`)?.scrollIntoView();
   }, []);
@@ -244,6 +185,7 @@ export const CitySelector = memo(function CitySelector(props:CitySelectorProps) 
           &#xf063;
         </i>
       </div>
+      {/* Show Suggest if user input search key */}
       {Boolean(key) && (
         <Suggest searchKey={key} onSelect={key => onSelect(key)} />
       )}

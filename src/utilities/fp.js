@@ -1,3 +1,6 @@
+/*
+    Cut the hour, minute, second, millisecond from timestamp
+*/
 export function h0(timestamp = Date.now()) {
     const target = new Date(timestamp);
 
