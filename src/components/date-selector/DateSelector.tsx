@@ -20,11 +20,11 @@ export function DateSelector(props: DateSelectorProps) {
   now.setMinutes(0);
   now.setSeconds(0);
   now.setMilliseconds(0);
-  now.setDate(1);
+  now.setDate(1);   // now is the first day of crrent month
 
   const monthSequence = [now.getTime()];
 
-  now.setMonth(now.getMonth() + 1);
+  now.setMonth(now.getMonth() + 1);    // now is the first day of next month
   monthSequence.push(now.getTime());
 
   now.setMonth(now.getMonth() + 1);

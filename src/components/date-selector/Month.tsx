@@ -7,7 +7,7 @@ import {Week} from './Week'
 
 interface MonthProps {
   startingTimeInMonth: number;
-  onSelect: (key: ReactText) => void;
+  onSelect: (key: ReactText) => void;    // Pass this function to sub compoent Day
 }
 
 export function Month(props: MonthProps) {
