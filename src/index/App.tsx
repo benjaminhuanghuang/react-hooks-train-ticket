@@ -13,6 +13,7 @@ import {Submit} from "./submit/Submit";
 
 import { h0 } from "../utilities";
 
+// import action creator, will be passed to dispatch
 import {
   exchangeFromTo,
   showCitySelector,
@@ -50,9 +51,27 @@ function App(props: AppProps) {
     departDate
   } = props;
 
+
+  /*
+    This method will return a new function when App component refresh, 
+    that will case Header component refresh
+  */
+  const onBack_bad = () => {
+    window.history.back();
+  };
+
   const onBack = useCallback(() => {
     window.history.back();
   }, []);
+
+
+  /* solution 1 */
+  // const doExchangeFromTo = useCallback(()=>{
+  //   dispatch(exchangeFromTo());
+  // }, []);
+  // const doShowCitySelector = useCallback((m)=>{
+  //   dispatch(showCitySelector(m));
+  // }, []);
 
   const cbs = useMemo(() => {
     return bindActionCreators(
@@ -142,6 +161,7 @@ function App(props: AppProps) {
 }
 
 export default connect(
+  // Import to, from .... from state
   function mapStateToProps(state) {
     return state;
   },

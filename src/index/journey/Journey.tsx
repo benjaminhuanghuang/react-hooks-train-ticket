@@ -1,5 +1,5 @@
 /*
-  Start station <=> end station
+  Start station <=> End station
 */
 import React from "react";
 import switchImg from "../imgs/switch.svg";
@@ -8,9 +8,12 @@ import "./Journey.css";
 interface JourneyProps {
   from: string;
   to: string;
+  /* swich to, form station */
   exchangeFromTo: () => void;
+  /* show/hide city selector */
   showCitySelector: (select: boolean) => void;
 }
+
 export const Journey = (props: JourneyProps) => {
   const { from, to, exchangeFromTo, showCitySelector } = props;
 

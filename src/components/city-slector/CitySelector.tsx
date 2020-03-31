@@ -163,6 +163,10 @@ const Suggest = memo(function Suggest(props: SuggestProps) {
     </div>
   );
 });
+
+/*
+  City Selector
+*/
 interface CitySelectorProps {
   show?: boolean;
   cityData: any;
