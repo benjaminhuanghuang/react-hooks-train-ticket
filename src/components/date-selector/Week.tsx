@@ -1,6 +1,4 @@
 import React, { ReactText } from "react";
-import classnames from "classnames";
-import { h0 } from "../../utilities";
 //
 import {Day} from './Day'
 

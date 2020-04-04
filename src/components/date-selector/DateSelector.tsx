@@ -20,14 +20,16 @@ export function DateSelector(props: DateSelectorProps) {
   now.setMinutes(0);
   now.setSeconds(0);
   now.setMilliseconds(0);
-  now.setDate(1);   // now is the first day of crrent month
+  now.setDate(1);   // now is the 1 day 00:00 of crrent month
 
   const monthSequence = [now.getTime()];
 
-  now.setMonth(now.getMonth() + 1);    // now is the first day of next month
+  // push the 1 day 00:00 of next month (month + 1), year + 1 if curren month is 12
+  now.setMonth(now.getMonth() + 1);    
   monthSequence.push(now.getTime());
 
-  now.setMonth(now.getMonth() + 1);
+  // push the 1 day 00:00 of next month (month + 1), year + 1 if curren month is 12
+  now.setMonth(now.getMonth() + 1);  
   monthSequence.push(now.getTime());
 
   return (
@@ -39,7 +41,7 @@ export function DateSelector(props: DateSelectorProps) {
             <Month
               key={month}
               onSelect={onSelect}
-              startingTimeInMonth={month}
+              startingTimeInMonth={month}  
             />
           );
         })}

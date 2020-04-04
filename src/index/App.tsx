@@ -121,12 +121,15 @@ function App(props: AppProps) {
     );
   }, []);
 
+  
   const onSelectDate = useCallback(day => {
     if (!day) {
+      // there are some null day padded before first day and last day of month
       return;
     }
 
     if (day < h0()) {
+      // disable the day passed
       return;
     }
 

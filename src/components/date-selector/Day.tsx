@@ -8,7 +8,7 @@ interface DayProps {
 }
 export function Day(props: DayProps) {
   const { day, onSelect } = props;
-
+  // null value padded before the fist data and after the last day
   if (!day) {
     return <td className="null"></td>;
   }
