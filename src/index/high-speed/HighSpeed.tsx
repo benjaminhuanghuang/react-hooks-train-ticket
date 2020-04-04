@@ -16,14 +16,14 @@ export const HighSpeed = (props: HighSpeedProps) => {
         <input type="hidden" name="highSpeed" value={String(highSpeed)} />
         <div
           className={classnames("high-speed-track", {
-            checked: highSpeed
+            checked: highSpeed,
           })}
         >
           <span
             className={classnames("high-speed-handle", {
-              checked: highSpeed
+              checked: highSpeed,
             })}
-          ></span>
+          />
         </div>
       </div>
     </div>
