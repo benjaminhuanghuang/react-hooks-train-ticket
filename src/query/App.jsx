@@ -1,3 +1,10 @@
+/*
+    UI:
+        Nav
+        List
+        Bottom
+
+*/
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import URI from 'urijs';

@@ -1,3 +1,6 @@
+/*
+    Train list
+*/
 import React, { memo, useMemo } from 'react';
 import URI from 'urijs';
 import PropTypes from 'prop-types';

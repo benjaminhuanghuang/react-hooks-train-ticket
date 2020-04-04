@@ -1,3 +1,6 @@
+/*
+  Used in Query.html. query prev day and next day
+*/
 import React, { useMemo, memo } from "react";
 import classnames from "classnames";
 import dayjs from "dayjs";
@@ -11,6 +14,7 @@ interface NavProps {
   isPrevDisabled: boolean;
   isNextDisabled: boolean;
 }
+
 export const Nav = memo(function Nav(props: NavProps) {
   const { date, prev, next, isPrevDisabled, isNextDisabled } = props;
 
