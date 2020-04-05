@@ -1,19 +1,10 @@
-/*
-    Time slider, used in Bo
-*/
 import React, { memo, useState, useMemo, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import leftPad from "left-pad";
-import { useWinSize } from "../utilities";
+import useWinSize from "../common/useWinSize";
 import "./Slider.css";
 
-interface SliderProps {
-  title: string;
-  currentStartHours: number;
-  currentEndHours: number;
-  onStartChanged: () => void;
-  onEndChanged: () => void;
-}
-const Slider = memo(function Slider(props: SliderProps) {
+const Slider = memo(function Slider(props) {
   const {
     title,
     currentStartHours,
@@ -194,5 +185,13 @@ const Slider = memo(function Slider(props: SliderProps) {
     </div>
   );
 });
+
+Slider.propTypes = {
+  title: PropTypes.string.isRequired,
+  currentStartHours: PropTypes.number.isRequired,
+  currentEndHours: PropTypes.number.isRequired,
+  onStartChanged: PropTypes.func.isRequired,
+  onEndChanged: PropTypes.func.isRequired,
+};
 
 export default Slider;
