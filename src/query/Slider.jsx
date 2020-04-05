@@ -1,3 +1,6 @@
+/*
+  Slider with two handle block
+*/
 import React, { memo, useState, useMemo, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import leftPad from "left-pad";
@@ -5,19 +8,13 @@ import useWinSize from "../common/useWinSize";
 import "./Slider.css";
 
 const Slider = memo(function Slider(props) {
-  const {
-    title,
-    currentStartHours,
-    currentEndHours,
-    onStartChanged,
-    onEndChanged,
-  } = props;
+  const { title, currentStartHours, currentEndHours, onStartChanged, onEndChanged } = props;
 
   const winSize = useWinSize();
-
+  // the two handle block
   const startHandle = useRef();
   const endHandle = useRef();
-
+  // recored data use ref can cross refress
   const lastStartX = useRef();
   const lastEndX = useRef();
 
@@ -27,6 +24,7 @@ const Slider = memo(function Slider(props) {
   const prevCurrentStartHours = useRef(currentStartHours);
   const prevCurrentEndHours = useRef(currentEndHours);
 
+  // Conver time to percentage
   const [start, setStart] = useState(() => (currentStartHours / 24) * 100);
   const [end, setEnd] = useState(() => (currentEndHours / 24) * 100);
 
@@ -39,7 +37,7 @@ const Slider = memo(function Slider(props) {
     setEnd((currentEndHours / 24) * 100);
     prevCurrentEndHours.current = currentEndHours;
   }
-
+  // restrict percentage 0 to 100
   const startPercent = useMemo(() => {
     if (start > 100) {
       return 100;
@@ -64,6 +62,7 @@ const Slider = memo(function Slider(props) {
     return end;
   }, [end]);
 
+  // Convert percentange back to a integer
   const startHours = useMemo(() => {
     return Math.round((startPercent * 24) / 100);
   }, [startPercent]);
@@ -72,6 +71,7 @@ const Slider = memo(function Slider(props) {
     return Math.round((endPercent * 24) / 100);
   }, [endPercent]);
 
+  //
   const startText = useMemo(() => {
     return leftPad(startHours, 2, "0") + ":00";
   }, [startHours]);
@@ -80,6 +80,7 @@ const Slider = memo(function Slider(props) {
     return leftPad(endHours, 2, "0") + ":00";
   }, [endHours]);
 
+  // DOM object event hanlder
   function onStartTouchBegin(e) {
     const touch = e.targetTouches[0];
     lastStartX.current = touch.pageX;
@@ -106,42 +107,31 @@ const Slider = memo(function Slider(props) {
     setEnd((end) => end + (distance / rangeWidth.current) * 100);
   }
 
+  // Calculate the width DOM element "Range" when window size change
   useEffect(() => {
-    rangeWidth.current = parseFloat(
-      window.getComputedStyle(range.current).width
-    );
+    rangeWidth.current = parseFloat(window.getComputedStyle(range.current).width);
   }, [winSize.width]);
 
+  // Add event handler to DOM object
   useEffect(() => {
-    startHandle.current.addEventListener(
-      "touchstart",
-      onStartTouchBegin,
-      false
-    );
+    // Event handler for start handle
+    startHandle.current.addEventListener("touchstart", onStartTouchBegin, false);
     startHandle.current.addEventListener("touchmove", onStartTouchMove, false);
+
+    // Event handler for end handle
     endHandle.current.addEventListener("touchstart", onEndTouchBegin, false);
     endHandle.current.addEventListener("touchmove", onEndTouchMove, false);
 
+    // return the clean function
     return () => {
-      startHandle.current.removeEventListener(
-        "touchstart",
-        onStartTouchBegin,
-        false
-      );
-      startHandle.current.removeEventListener(
-        "touchmove",
-        onStartTouchMove,
-        false
-      );
-      endHandle.current.removeEventListener(
-        "touchstart",
-        onEndTouchBegin,
-        false
-      );
+      startHandle.current.removeEventListener("touchstart", onStartTouchBegin, false);
+      startHandle.current.removeEventListener("touchmove", onStartTouchMove, false);
+      endHandle.current.removeEventListener("touchstart", onEndTouchBegin, false);
       endHandle.current.removeEventListener("touchmove", onEndTouchMove, false);
     };
   });
 
+  // When startHours changed caused by DOM element touch moving, call onStartChanged to notify outside
   useEffect(() => {
     onStartChanged(startHours);
   }, [startHours]);
@@ -155,6 +145,7 @@ const Slider = memo(function Slider(props) {
       <h3>{title}</h3>
       <div className="range-slider">
         <div className="slider" ref={range}>
+          {/* the bright line */}
           <div
             className="slider-range"
             style={{
@@ -162,6 +153,7 @@ const Slider = memo(function Slider(props) {
               width: endPercent - startPercent + "%",
             }}
           ></div>
+          {/* the left handle block */}
           <i
             ref={startHandle}
             className="slider-handle"
@@ -171,6 +163,7 @@ const Slider = memo(function Slider(props) {
           >
             <span>{startText}</span>
           </i>
+          {/* the right handle block */}
           <i
             ref={endHandle}
             className="slider-handle"
