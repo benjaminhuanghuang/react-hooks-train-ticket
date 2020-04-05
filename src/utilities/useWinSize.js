@@ -1,3 +1,6 @@
+/*
+    Resize component according to the view size
+*/
 import { useState, useEffect } from 'react';
 
 export function useWinSize() {
