@@ -71,3 +71,14 @@ Modify webpack config in paths.js
 ```
   new HtmlWebpackPlugin()
 ```
+
+5. output
+```
+  filename: isEnvProduction
+    ? 'static/js/[name].[contenthash:8].js'
+    : isEnvDevelopment && 'static/js/[name].js',
+  // There are also additional JS chunk files if you use code splitting.
+  chunkFilename: isEnvProduction
+    ? 'static/js/[name].[contenthash:8].chunk.js'
+    : isEnvDevelopment && 'static/js/[name].chunk.js',
+```
