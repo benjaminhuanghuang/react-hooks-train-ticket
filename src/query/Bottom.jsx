@@ -118,9 +118,9 @@ const BottomModal = memo(function BottomModal(props) {
   );
 
   const [localCheckedTrainTypes, localCheckedTrainTypesDispatch] = useReducer(
-    checkedReducer,
-    checkedTrainTypes,
-    (checkedTrainTypes) => {
+    checkedReducer,  // reducer function
+    checkedTrainTypes,  // state init value
+    (checkedTrainTypes) => {  // async
       return {
         ...checkedTrainTypes,
       };
@@ -189,6 +189,8 @@ const BottomModal = memo(function BottomModal(props) {
     },
   ];
 
+  // For Sure button click, send local variabls to storage and close BottomModal
+  // Dispatch actions
   function sure() {
     setCheckedTicketTypes(localCheckedTicketTypes);
     setCheckedTrainTypes(localCheckedTrainTypes);
@@ -203,7 +205,7 @@ const BottomModal = memo(function BottomModal(props) {
 
     toggleIsFiltersVisible();
   }
-
+  // Disable reset button
   const isResetDisabled = useMemo(() => {
     return (
       Object.keys(localCheckedTicketTypes).length === 0 &&
@@ -226,6 +228,7 @@ const BottomModal = memo(function BottomModal(props) {
     localArriveTimeEnd,
   ]);
 
+  // clear all local data
   function reset() {
     if (isResetDisabled) {
       return;
@@ -340,6 +343,7 @@ export default function Bottom(props) {
     setArriveTimeEnd,
   } = props;
 
+  // Disable button
   const noChecked = useMemo(() => {
     return (
       Object.keys(checkedTicketTypes).length === 0 &&

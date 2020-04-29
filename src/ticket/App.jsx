@@ -1,3 +1,6 @@
+/*
+    Tickes to the train    
+*/
 import React, { useEffect, useCallback, useMemo, lazy, Suspense } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
